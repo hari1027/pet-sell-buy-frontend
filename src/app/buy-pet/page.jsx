@@ -123,10 +123,10 @@ const TableComponent = () => {
   
   const filteredData = data.filter((item) => {
     return (
-      (!filters.type || item.type === filters.type) &&  // ✅ "Any" is treated as null (no filter)
-      (!filters.gender || item.gender === filters.gender) &&
-      (!filters.age || (Number(item.age) >= Number(filters.age[0]) && Number(item.age) <= (filters.age[1]) )) &&
-      (!filters.price || (Number(item.price) >= Number(filters.price[0]) && Number(item.price) <= Number(filters.price[1]) ))
+      (!filters.type || (item.type !== null && item.type !== undefined && item.type === filters.type)) &&  // ✅ "Any" is treated as null (no filter)
+      (!filters.gender || (item.gender !== null && item.gender !== undefined && item.gender === filters.gender)) &&
+      (!filters.age || (item.age !== null && item.age !== undefined && Number(item.age) >= Number(filters.age[0]) && Number(item.age) <= (filters.age[1]) )) &&
+      (!filters.price || (item.price !== null && item.price !== undefined && Number(item.price) >= Number(filters.price[0]) && Number(item.price) <= Number(filters.price[1]) ))
     );
   });
 
