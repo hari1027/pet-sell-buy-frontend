@@ -206,6 +206,13 @@ export default function UpdatePet({ pet, onBack }) {
             className="w-full p-3 pl-3 border-2 rounded-full text-black bg-fuchsia-100 placeholder-gray-400"
             placeholder="Enter quantity" 
             min="1"
+            pattern="[0-9]*" 
+            inputMode="numeric" 
+            onKeyDown={(e) => {
+              if (e.key === "e" || e.key === "E" || e.key === "+" || e.key === "-") {
+                e.preventDefault();
+              }
+            }}
           />
         </div>
 
@@ -233,13 +240,25 @@ export default function UpdatePet({ pet, onBack }) {
         {/* Age */}
         <div>
           <label className="block font-bold text-center mb-2">Age</label>
-          <input type="number" {...register("age", { min: 1, valueAsNumber: true })} className="w-full p-3 pl-3 border-2 rounded-full text-black placeholder-gray-400" placeholder="Enter age" min="1" />
+          <input type="number" {...register("age", { min: 1, valueAsNumber: true })} className="w-full p-3 pl-3 border-2 rounded-full text-black placeholder-gray-400" placeholder="Enter age" min="1"  pattern="[0-9]*" 
+            inputMode="numeric" 
+            onKeyDown={(e) => {
+              if (e.key === "e" || e.key === "E" || e.key === "+" || e.key === "-") {
+                e.preventDefault();
+              }
+            }} />
         </div>
 
         {/* Price */}
         <div>
           <label className="block font-bold text-center mb-2">Price</label>
-          <input type="number" {...register("price", { min: 1, valueAsNumber: true })} className="w-full p-3 pl-3 border-2 rounded-full text-black placeholder-gray-400" placeholder="Enter price" min="1" />
+          <input type="number" {...register("price", { min: 1, valueAsNumber: true })} className="w-full p-3 pl-3 border-2 rounded-full text-black placeholder-gray-400" placeholder="Enter price" min="1"  pattern="[0-9]*" 
+            inputMode="numeric" 
+            onKeyDown={(e) => {
+              if (e.key === "e" || e.key === "E" || e.key === "+" || e.key === "-") {
+                e.preventDefault();
+              }
+            }} />
         </div>
 
         {/* Images Upload */}
@@ -275,12 +294,13 @@ export default function UpdatePet({ pet, onBack }) {
             ))}
           </div>
         </div>
-        <div className="flex items-center justify-center gap-4 mt-4">
-         <button type="submit" className="w-30 p-3 bg-green-400 text-white rounded-2xl shadow-lg hover:bg-green-400 transition duration-300 cursor-pointer" disabled={loading}>{loading ? "Updating..." : "Update"}</button>
-         <button className="w-30 p-3 bg-red-400 text-white rounded-2xl shadow-lg hover:bg-red-400 transition duration-300 cursor-pointer" disabled={loading} onClick={handleDelete}> {loading ? "Deleting..." : "Delete / Finish Order"}</button>
+        <div className="flex items-center justify-center gap-4 mt-4 flex-col">
+         <div className="flex gap-4">
+           <button type="submit" className="w-30 p-3 bg-green-400 text-white rounded-2xl shadow-lg hover:bg-green-400 transition duration-300 cursor-pointer" disabled={loading}>{loading ? "Updating..." : "Update"}</button>
+           <button className="w-30 p-3 bg-red-400 text-white rounded-2xl shadow-lg hover:bg-red-400 transition duration-300 cursor-pointer" disabled={loading} onClick={handleDelete}> {loading ? "Deleting..." : "Delete / Finish Order"}</button>
+         </div>
+         <button className="w-30 p-3 bg-blue-400 text-white rounded-2xl shadow-lg hover:bg-blue-400 transition duration-300 cursor-pointer flex items-center mt-4 justify-self-center justify-center" onClick={onBack} disabled={loading}>back</button>
         </div>
-
-        <button className="w-30 p-3 bg-blue-400 text-white rounded-2xl shadow-lg hover:bg-blue-400 transition duration-300 cursor-pointer flex items-center mt-4 justify-self-center justify-center" onClick={onBack} disabled={loading}>back</button>
 
       </form>
       {notification.show && (

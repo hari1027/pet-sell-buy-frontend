@@ -125,7 +125,7 @@ const PetDetails = ({ pet, onBack }) => {
 
   return (
     <div className="flex justify-center min-h-screen h-full p-8 bg-fuchsia-100 flex-col items-center">
-        <h2 className="text-2xl font-bold text-center text-green-500 mb-4">Pet Details</h2>
+        <h2 className="text-2xl font-bold text-center mb-4">Pet Details</h2>
         <div className="border-2 p-2 rounded-lg w-full">
           {[
             { label: "Type", value: pet.type },

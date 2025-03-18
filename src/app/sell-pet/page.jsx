@@ -167,6 +167,13 @@ export default function AddPet() {
           <label className="block font-bold text-center mb-2">Numbers</label>
           <input 
             type="number" 
+            pattern="[0-9]*" 
+            inputMode="numeric" 
+            onKeyDown={(e) => {
+              if (e.key === "e" || e.key === "E" || e.key === "+" || e.key === "-") {
+                e.preventDefault();
+              }
+            }}
             {...register("numbers", {valueAsNumber: true })} 
             className="w-full p-3 pl-3 border-2 rounded-full text-black bg-fuchsia-100 placeholder-gray-400"
             placeholder="Enter quantity" 
@@ -198,13 +205,25 @@ export default function AddPet() {
         {/* Age */}
         <div>
           <label className="block font-bold text-center mb-2">Age</label>
-          <input type="number" {...register("age", { min: 1, valueAsNumber: true })} className="w-full p-3 pl-3 border-2 rounded-full text-black placeholder-gray-400" placeholder="Enter age" min="1" />
+          <input type="number" {...register("age", { min: 1, valueAsNumber: true })} className="w-full p-3 pl-3 border-2 rounded-full text-black placeholder-gray-400" placeholder="Enter age" min="1"  pattern="[0-9]*" 
+            inputMode="numeric" 
+            onKeyDown={(e) => {
+              if (e.key === "e" || e.key === "E" || e.key === "+" || e.key === "-") {
+                e.preventDefault();
+              }
+            }} />
         </div>
 
         {/* Price */}
         <div>
           <label className="block font-bold text-center mb-2">Price</label>
-          <input type="number" {...register("price", { min: 1, valueAsNumber: true })} className="w-full p-3 pl-3 border-2 rounded-full text-black placeholder-gray-400" placeholder="Enter price" min="1" />
+          <input type="number" {...register("price", { min: 1, valueAsNumber: true })} className="w-full p-3 pl-3 border-2 rounded-full text-black placeholder-gray-400" placeholder="Enter price" min="1"  pattern="[0-9]*" 
+            inputMode="numeric" 
+            onKeyDown={(e) => {
+              if (e.key === "e" || e.key === "E" || e.key === "+" || e.key === "-") {
+                e.preventDefault();
+              }
+            }} />
         </div>
 
         {/* Images Upload */}
