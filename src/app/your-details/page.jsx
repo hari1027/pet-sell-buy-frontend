@@ -113,7 +113,7 @@ export default function YourDetails() {
 
       if (response.data.errors) {
         console.error("Failed to delete account. Try again.");
-        showNotification("Failed to delete account. Try again.", "error");
+        showNotification("Failed to delete account. Please Check your orders there should be no order's left in your account .", "error");
       } else {
         showNotification("Deleted User Successfully", "info");
         localStorage.removeItem("userDetails");
